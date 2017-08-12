@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+#include<vector>
+
+int main()
+{
+    /*vector构造函数 初始化4种*/
+    vector<int> a;          //第一种：a为空，什么也没有
+    vector<int> b(4,100);   //第二种：初始化为连续4个100；
+                            //输出为100 100 100 100
+
+    vector<int> c(b.begin(),b.end());   //第三种：参数类型为迭代器这种相当于把b的开始到结束给c，输出为100 100 100 100
+                                          //也可以这么写：vector<int> c(b.begin()+2,b.end());输出为100 100
+
+    vector<int> d(c);       //以另一个对象做初始化，输出跟c一样
+
+    int e[]={16,2,77,28};
+    vector<int> f(e,e+sizeof(e)/sizeof(int));//使用数组做初始化，第一个参数为起始地址，第二个参数为数组末地址
+                                            //输出结果跟数组e一样。
+    
+    return 0;
+}
