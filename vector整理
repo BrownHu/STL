@@ -1,4 +1,4 @@
-#include <iostream>
+    #include <iostream>
 using namespace std;
 #include<vector>
 
@@ -8,7 +8,7 @@ int main()
     vector<int> a;          //第一种：a为空，什么也没有
     vector<int> b(4,100);   //第二种：初始化为连续4个100；
                             //输出为100 100 100 100
-
+    vector<int> b1(4);      //会默认为4个0
     vector<int> c(b.begin(),b.end());   //第三种：参数类型为迭代器这种相当于把b的开始到结束给c，输出为100 100 100 100
                                           //也可以这么写：vector<int> c(b.begin()+2,b.end());输出为100 100
 
