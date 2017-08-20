@@ -78,3 +78,31 @@ int main ()
         cout<<myvector[i]<<" ";
     return 0;
 }
+
+
+int main ()
+{
+    /********************************
+    *关于vector的at(),back(),capacity()
+    *                              介绍
+    *********************************/
+    vector<int> myvector (10);//初始化10个0
+
+    for (unsigned i=0; i<myvector.size(); i++)
+        myvector.at(i)=i;//改变容器下标i所对应的值
+
+    for (unsigned i=0; i<myvector.size(); i++)//输出0~9
+        cout << ' ' << myvector.at(i);
+    cout << '\n';
+
+    myvector.back();//返回最后一个元素
+    cout<<myvector.back()<<endl;//输出9
+    
+    
+    cout<<myvector.size()<<'\t';//size求的是实际有多少个数
+    //capacity()计算的是真实的容量，比如申请了5个空间，放了3个数，size()结果为3；capacity()结果为5
+    cout<<myvector.capacity()<<endl;//容器真实容量
+    
+
+  return 0;
+}
