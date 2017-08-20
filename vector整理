@@ -48,3 +48,33 @@ int main ()
     cout<<*ite<<endl;//输出的是最后一个数
   return 0;
 }
+
+
+
+
+int main ()
+{
+    /************************************
+    *关于vector的empty,push_back(),pop_back()
+    *                               介绍
+    ************************************/
+    vector<int> myvector;
+    
+    myvector.empty();//判断容器是否是空，若是空的返回true,否则返回false;
+    bool flag=myvector.empty();
+    cout<<flag<<endl;//输出1
+    
+    for(int i=1;i<=10;i++)
+        myvector.push_back(i);//每次会向容器末尾添加一个数字i
+        
+    for(int i=0;i<myvector.size();++i)//结果是1~10这10个数字
+        cout<<myvector[i]<<" ";
+        
+    myvector.pop_back();//会移除容器中末尾的值，少了一个10
+    
+    myvector.assign (7,100);//会重新初始化容器，不管以前是啥，都会变成7个10
+    cout<<endl;
+    for(int i=0;i<myvector.size();++i)//结果是7个100
+        cout<<myvector[i]<<" ";
+    return 0;
+}
