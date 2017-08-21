@@ -263,3 +263,39 @@ int main()
 ***********************************************************/
     return 0;
 }
+
+
+int main()
+{
+    /***************************************
+
+        vector<int> a;
+        a.reserve(10);//申请10个空间
+        cout<<a.size()<<endl;//输出：0
+        cout<<a.capacity()<<endl;//输出：10
+
+    ****************************************/
+    vector<int> myvector;
+    for (int i=1;i<10;i++)
+        myvector.push_back(i);
+/***********************************************************
+    cout<<myvector.size()<<endl;//输出9
+    cout<<myvector.capacity()<<endl;//输出16
+
+    myvector.resize(5);//重新设置size()大小，不会改变capacity(),如果设置的大小大于capacity(),则会改变capacity()
+    cout<<myvector.size()<<endl;//输出：5
+    cout<<myvector.capacity()<<endl;//输出：16
+
+    cout<<"myvector[8]="<<myvector[8]<<endl;//输出：9，说明其他元素值还在
+*************************************************************/
+
+    myvector.resize(10,100);//改变size大小，若size变小，100没有意义，若变大，把多出来的空间用100填进去
+
+    myvector.resize(13);//size若大于原先的，用0初始化元素
+    cout<<myvector.capacity()<<endl;//输出:16
+    for (int i=0;i<myvector.size();i++)//输出:1 2 3 4 5 6 7 8 9 100 0 0 0
+        cout << ' ' << myvector[i];
+    cout << '\n';
+
+    return 0;
+}
