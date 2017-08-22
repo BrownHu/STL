@@ -1,0 +1,36 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+    //string的几种构造函数初始化
+    string s0 ("Initial string");
+    cout<<s0<<endl;//输出：Initial string
+
+    string s1;
+    cout<<s1<<endl;//输出为空
+
+    string s2 (s0);//用另一个对象做初始化
+    cout<<s2<<endl;//输出：Initial string
+
+    string s3 (s0, 8, 3);//以对象s0字符串下标8开始连续3个赋给s3
+    cout<<s3<<endl;//输出：str
+
+    string s4 ("A character sequence");
+    cout<<s4<<endl;
+
+    string s5 ("Another character sequence", 12);//以字符串的前12个字符做初始化
+    cout<<s5<<endl;//输出：Another char
+
+    string s6 (10, 'x');//以10个x做初始化
+    cout<<s6<<endl;//输出：xxxxxxxxxx
+
+    string s7 (10, 42);      //以10个ASCII编码值为42的字符做初始化
+    cout<<s7<<endl;//输出：**********
+
+    string s8 (s0.begin(), s0.begin()+7);//以s0的一段做初始化，但不包括s0.begin()+7
+    cout<<s8<<endl;//输出：Initial
+
+    return 0;
+}
