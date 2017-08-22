@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     //string的几种构造函数初始化
-    string s0 ("Initial string");
+    string s0 ("Initial string");//也可以直接这样：s0="Initial string";
     cout<<s0<<endl;//输出：Initial string
 
     string s1;
@@ -31,6 +31,32 @@ int main()
 
     string s8 (s0.begin(), s0.begin()+7);//以s0的一段做初始化，但不包括s0.begin()+7
     cout<<s8<<endl;//输出：Initial
+
+    return 0;
+}
+
+int main()
+{
+    /**********************************
+    *
+    *append():给对象尾部追加一些字符
+    *
+    **********************************/
+    string s0("abcd");//s0="abcd"
+    s0.append("ef");//s0="abcdef"
+
+    string s1="123456789";
+    s0.append(s1,3,5);//从s1的下标3处开始添加5个字符
+    cout<<s0<<endl;//s0=abcdef45678
+
+    string s2="111";
+    s2.append(3,'2');//追加3个字符2,第二个参数也可以写ASCII值
+    cout<<s2<<endl;//s2=111222
+
+    string s3="abcd";
+    s3.append(s1.begin()+3,s1.begin()+6);//把s1的一段字符追加上
+    cout<<s3<<endl;//s3=abcd456
+
 
     return 0;
 }
