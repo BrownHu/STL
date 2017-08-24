@@ -154,3 +154,80 @@ int main()
 **********************************************/
     return 0;
 }
+
+int main()
+{
+    /**********************************************************************************************
+
+    //（1）size_t find (const string& str, size_t pos = 0) const;  //查找对象--string类对象
+    //（2）size_t find (const char* s, size_t pos = 0) const; //查找对象--字符串
+    //（3）size_t find (const char* s, size_t pos, size_t n) const;  //查找对象--字符串的前n个字符
+    //（4）size_t find (char c, size_t pos = 0) const;  //查找对象--字符
+    string s0="123456789";
+    string s1="456";
+    int a=s0.find(s1);//在s0中找到s1，返回s0的起始下标,a=3;找不到返回空
+
+    s0.find("34",2,2);//第一个参数代表查找的字符串，第二个参数代表从s0查找的起始下标，第三个参数从选定的起始下标开始，查找字符个数
+                        //找到了返回起始下标，找不到，返回-1
+
+    char c='6';
+    cout<<s0.find(c,3);//在s0中查找一个字符c，从下标3开始，找到返回下标，找不到返回一个未知数；第一个参数也可以传一个字符串
+
+    *********************************************************************************************************/
+/*************************************************************************************************8
+    //find_first_not_of()
+
+    //返回在字符串中首次出现的不匹配str中的任何一个字符的首字符索引, 从index开始搜索, 如果全部匹配则返回string::npos。
+    //size_type find_first_not_of(const string &str,size_type index =0 )const;
+    //size_type find_first_not_of(const Char* str,size_type index =0 )const;
+
+    //从index开始起搜索当前字符串, 查找其中与str前num个字符中的任意一个都不匹配的序列, 返回满足条件的第一个字符索引, 否则返回string::npos。
+    //size_type find_first_not_of(const Char* str,size_type index,size_type num )const;
+
+    //返回在当前字符串中第一个不匹配ch字符的索引, 从index开始搜索, 没用收获则返回string::npos。
+    //size_type find_first_not_of(Char ch,size_type index =0 )const;
+
+    string s0="abcdefgh";
+    string s1="abcdef";
+    cout<<s0.find_first_not_of(s1);//从下标0开始，与s1中开始比较，找到第一个不匹配的字符，返回下标，相等返回一个未知数。
+
+    cout<<s0.find_first_not_of("cb",2,3);//从s0的下标2开始查找3个字符中首次与字符串不匹配的字符，并返回其下标。
+
+***********************************************************************************************************************/
+/***********************************************************************************************
+    //find_first_of()笔记：
+
+    string s0="123456789";
+    string s1="456";
+
+    //从s0的下标1开始(第二个参数可以不写，默认从0开始),找到首次与s1中第一个字符相同的字符并返回其下标。
+    cout<<s0.find_first_of(s1,1)<<endl;
+
+    //从s0的下标1开始，查找与字符串“abc79”的前三个字符中某个字符首次匹配，返回在s0中下标值。
+    cout<<s0.find_first_of("abc79",1,3)<<endl;
+
+***************************************************************************************************/
+
+/***************************************************************************************
+    //(1)size_t find_last_not_of (const string& str, size_t pos = npos) const;
+    //(2)size_t find_last_not_of (const char* s, size_t pos = npos) const;
+    //(3)size_t find_last_not_of (const char* s, size_t pos, size_t n) const;
+    //(4)size_t find_last_not_of (char c, size_t pos = npos) const;
+    string s0="abcdefghijk";
+    string s1="abd";
+
+    //从s0下标7开始(不写7从最后一位开始)与s0匹配(倒着走，7下来是6)，返回首次字符不匹配的下标。这里返回是7
+    cout<<s0.find_last_not_of(s1,7);
+    //其他几个函数与find_first_not_of()类似
+*************************************************************************************/
+
+
+    //(1)size_t find_last_of (const string& str, size_t pos = npos) const;
+    //(2)size_t find_last_of (const char* s, size_t pos = npos) const;
+    //(3)size_t find_last_of (const char* s, size_t pos, size_t n) const;
+    //(4)size_t find_last_of (char c, size_t pos = npos) const;
+    string a="cde456";
+    string b="1234";
+    cout<<a.find_last_of(b);//意思与find_last_not_of()差不多，只是找的是首次匹配的
+    return 0;
+}
