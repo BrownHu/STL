@@ -231,3 +231,24 @@ int main()
     cout<<a.find_last_of(b);//意思与find_last_not_of()差不多，只是找的是首次匹配的
     return 0;
 }
+
+int main()
+{
+    //没有back(),cbegin()，cend()函数
+    //compare()笔记
+//    int compare (const string& str) const;
+//    int compare (size_t pos, size_t len, const string& str) const;
+//    int compare (size_t pos, size_t len, const string& str,size_t subpos, size_t sublen) const;
+//    int compare (const char* s) const;
+//    int compare (size_t pos, size_t len, const char* s) const;
+//    int compare (size_t pos, size_t len, const char* s, size_t n) const;
+    string s0="bcdefgh";
+    string s1="bcdefgh";
+
+    //cout<<s0.compare(s1);//s0>s1 返回值大于0（具体值怎么计算没搞懂）；小于返回值小于0，相等等返回0
+
+    cout<<s0.compare(3,8,"fg");//第一个参数表示从s0的哪个下标开始比较；第二个为比较的字符个数，第三个为与s0比较的字符串
+
+    cout<<s0.compare(0,2,s1,2,1);//最后两个参数分别表示字从符串s1的下标2开始选一个字符比较。
+    return 0;
+}
