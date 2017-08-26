@@ -252,3 +252,101 @@ int main()
     cout<<s0.compare(0,2,s1,2,1);//最后两个参数分别表示字从符串s1的下标2开始选一个字符比较。
     return 0;
 }
+
+int main()
+{
+/**************************************
+    没有front()函数
+    insert()函数:
+(1)string& insert (size_t pos, const string& str);
+(2)string& insert (size_t pos, const string& str, size_t subpos, size_t sublen);
+(3)string& insert (size_t pos, const char* s);
+(4)string& insert (size_t pos, const char* s, size_t n);
+(5)string& insert (size_t pos, size_t n, char c);
+    void insert (iterator p, size_t n, char c);
+(6)iterator insert (iterator p, char c);
+(7)template <class InputIterator>
+   void insert (iterator p, InputIterator first, InputIterator last);
+
+**************************************/
+   //以下是关于insert()函数的示例
+    string str="012345";
+    string str2="6";
+    string str3="000abcd";
+    string::iterator it;
+
+    //str.insert(6,str2);//str="0123456"
+
+    //str.insert(6,str3,3,4);//str="012345abcd
+
+    //str.insert(5," 3210abc",3);//str="01234 325"
+
+    //str.insert(1,"to be");//str="0to be12345"
+
+    //str.insert(6,3,':');//str="012345:::"
+
+    //it = str.insert(str.begin()+5,',');//str="012345,"; *it=','
+
+    //str.insert (str.end(),3,'.');//str="012345..."
+
+    str.insert (str.begin()+2,str3.begin(),str3.begin()+3); //str="010002345"
+
+    return 0;
+}
+
+int main()
+{
+/******************************************************
+    //size()、length()、capacity()、max_size()示例
+    string str;
+    for(int i=0;i<100;i++)
+        str.push_back(i);
+    cout << "size: " << str.size() << "\n";
+    cout << "length: " << str.length() << "\n";
+    cout << "capacity: " << str.capacity() << "\n";
+    cout << "max_size: " << str.max_size() << "\n";
+//输出结果codeblocks下：
+//size: 100
+//length: 100
+//capacity: 128
+//max_size: 1073741820
+
+*************************************************************/
+
+/******************************************
+//  "+="、"="的重载：示例如下
+    string name ("John");
+    string family ("Smith");
+    name += " K. ";//name="John K. "
+    name += family;//name="John K. Smith"
+
+    string s;
+    s="123";
+    cout<<s;//输出123
+    //还有[]的重载，不做示例
+********************************************/
+
+/************************************************
+    //rbegin()、rend()练习示例
+    string s0="123456789";
+    string::reverse_iterator rit=s0.rbegin();
+    int i=0;
+    while(i<9)//输出结果为：987654321
+    {
+        cout<<*rit;
+        rit++;
+        i++;
+    }
+    rit=s0.rend();
+    cout<<endl<<*rit;//输出空
+    rit--;
+    cout<<endl;
+    while(i>0)//输出为：123456789
+    {
+        cout<<*rit;
+        rit--;
+        i--;
+    }
+****************************************************/
+    return 0;
+}
