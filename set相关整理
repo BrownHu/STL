@@ -84,3 +84,77 @@ int main()
     return 0;
 }
 *********************************************************************************************/
+
+int main()
+{
+/**********************************
+    //begin()、end()、rbegin()、rend()函数：
+    int a[]={1,2,3,4,5};
+    set<int> s0(a,a+5);
+    set<int>::iterator it;
+    it=s0.begin();
+    it++;//不能这么写it+=1或者it=it+1。
+    //其他类似。
+************************************/
+
+    //clear():清空容器
+    int a[]={1,2,3,4,5};
+    set<int> s0(a,a+5);
+    s0.clear();//s0什么也没有了
+
+    //count()函数：
+    int a1[]={1,2,3,4,5};
+    set<int> s1(a1,a1+5);
+    cout<<s1.count(10);//查看10是不是容器中元素，不是返回0.
+
+    //empty():判断容器是否为空，空的话返回true,非空返回false.
+    bool falg=s1.empty();
+
+    //equal_range()函数：
+    pair<set<int>::const_iterator,set<int>::const_iterator>ret;
+    ret=s1.equal_range(4);
+    cout<<" "<<*ret.first;//输出：4
+    cout<<" "<<*ret.second;//输出：5
+    
+    return 0;
+}
+
+int main()
+{
+    //insert()、erase()、find()
+    set<int> myset;
+    set<int>::iterator it;
+    for (int i=9; i>=1; i--)
+        myset.insert(i*10);//向容器中添加元素，并排序。返回值的类型为pair<iterator,bool>
+
+/****************************************************************
+
+    set<int> myset;
+    set<int>::iterator it;
+    for (int i=9; i>=1; i--)
+        myset.insert(i*10);
+    pair<std::set<int>::iterator,bool> ret;
+    ret = myset.insert(20);//插入会失败。
+    cout<<*ret.first<<endl;//输出20
+    cout<<ret.second<<endl;//输出0
+    myset.insert (it,25);//不管插入成功与否，都会返回it。
+
+*******************************************************************/
+    it = myset.begin();
+    ++it;
+
+    int a0[]={1,2,3,44,5};
+    set<int>s;
+    s.insert(a0,a0+5);//插入数组中的值，无返回值。
+
+    myset.erase (it);//把*it的值从容器中删除,没有返回值
+    cout<<endl<<myset.erase (60)<<" ";//从容器中找到40删除，返回1，没有这个元素返回0。
+
+    //iterator find (const value_type& val) const;
+    it = myset.find (40);//在容器中查找-3这个元素，找到返回iterator位置，找不到返回end()位置。
+
+    myset.erase (it, myset.end());//从it开始删除知道end()位置(不删除)结束
+
+    return 0;
+
+}
