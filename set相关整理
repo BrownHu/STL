@@ -1,0 +1,86 @@
+#include <iostream>
+
+using namespace std;
+#include<set>
+/********************************************************************************
+bool fncomp (int lhs, int rhs)
+{
+    return lhs<rhs;
+}
+
+class classcomp
+{
+    public:
+    bool operator() (const int& lhs, const int& rhs) const
+    {
+      return lhs>rhs;
+    }
+};
+int main()
+{
+    //set不支持:operator[]
+    //set构造函数：
+
+//  1.用数组初始化：如下
+    int myints[]= {10,10,30,80,50};
+    set<int> second (myints,myints+5);//初始化的时候会把数组中重复的数字去掉,并自动排好序
+    set<int>::iterator s=second.begin();
+    while(s!=second.end())
+    {
+        cout<<*s<<" ";
+        s++;
+    }
+    //输出：10 30 50 80
+
+///////////////////////////////////////////////////////////////
+//    2.用另一个set对象初始化
+    set<int> third (second);
+    s=third.begin();
+    cout<<endl;
+    while(s!=third.end())
+    {
+        cout<<*s<<" ";
+        s++;
+    }
+    //输出：10 30 50 80
+
+//////////////////////////////////////////////////////////////
+//  3.用一个set对象做初始化
+    set<int> fourth (second.begin(), --second.end());
+    s=fourth.begin();
+    cout<<endl;
+    while(s!=fourth.end())
+    {
+        cout<<*s<<" ";
+        s++;
+    }
+    //输出：10 30 50
+
+////////////////////////////////////////////////////////////////
+
+    int arr[]={1,2,3,4,6,6,7,8,5};
+    set<int,classcomp> fifth(arr,arr+9);//classcomp表示排序方式,用数组arr初始化set，去重并按照classcomp排序规则进行排序。
+    s=fifth.begin();
+    cout<<endl;
+    while(s!=fifth.end())
+    {
+        cout<<*s<<" ";
+        s++;
+    }
+    ////输出：8 7 6 5 4 3 2 1
+////////////////////////////////////////////////////////////////
+
+    bool(*fn_pt)(int,int) = fncomp;
+    set<int,bool(*)(int,int)> sixth (fn_pt);//参数必须作为函数指针。
+    sixth.insert(fifth.begin(),fifth.end());
+    s=sixth.begin();
+    cout<<endl;
+    while(s!=sixth.end())
+    {
+        cout<<*s<<" ";
+        s++;
+    }
+//////////////////////////////////////////////////////////////
+    return 0;
+}
+*********************************************************************************************/
