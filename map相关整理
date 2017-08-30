@@ -124,3 +124,182 @@ int main()
     return 0;
 }
 #endif
+
+#if 0
+
+int main()
+{
+/*****************************************************************
+//    map::equal_range
+//    pair<const_iterator,const_iterator> equal_range (const key_type& k) const;
+//    pair<iterator,iterator>             equal_range (const key_type& k);
+
+    map<char,int> mymap;
+
+    mymap['a']=10;
+    mymap['b']=20;
+    mymap['c']=30;
+    mymap['d']=40;
+    mymap['e']=50;
+    pair<map<char,int>::iterator,map<char,int>::iterator> ret;
+    ret = mymap.equal_range('b');//找到键值为b的，并返回给第一个iterator，并把他的下一个键值返回给第二个iterator，找不到的话，把首次大于键值b的键值返回个两个iterator。
+
+    cout << ret.first->first << " => " << ret.first->second << '\n';
+    cout << ret.second->first << " => " << ret.second->second<< '\n';
+//    输出结果：
+//    b => 20
+//    c => 30
+************************************************************************/
+
+/****************************************************
+//    map的 erase
+//    void erase (iterator position);
+//    size_type erase (const key_type& k);
+//    void erase (iterator first, iterator last);
+    map<char,int> mymap;
+    map<char,int>::iterator it;
+    mymap['a']=10;
+    mymap['b']=20;
+    mymap['c']=30;
+    mymap['d']=40;
+    mymap['e']=50;
+    mymap['f']=60;
+    
+    it=mymap.begin();
+    //删除a
+    mymap.erase(it);//通过iterator的位置来删除
+    //删除失败返回0
+    mymap.erase('g');//通过键值来删除，成功返回1，失败返回0
+    map<char,int>::iterator it1,it2;
+    it1=mymap.begin();
+    ++it1;      //不能这么写it1+=1或者it1=it1-1...
+    it2=mymap.end();
+    --it2;
+    --it2;
+    //删除c,d
+    mymap.erase(it1,it2);//删除一部分从it1到it2，但不包括it2.
+    it=mymap.begin();
+    while(it!=mymap.end())
+    {
+        cout<<it->first<<"==>"<<it->second<<endl;
+        it++;
+    }
+//    输出结果：
+//    b==>20
+//    e==>50
+//    f==>60
+***************************************************************/
+
+/*************************************************
+//    map::find
+//    iterator find (const key_type& k);
+//    const_iterator find (const key_type& k) const;
+    map<char,int> mymap;
+    mymap['a']=50;
+    mymap['b']=100;
+    mymap['c']=150;
+    mymap['d']=200;
+    mymap.find('c');//在容器中查找键值为c的元素，找到返回iterator位置，找不到返回mymap.end()位置。
+**********************************************/
+    return 0;
+}
+
+#endif 
+
+#if 0
+int main()
+{
+/********************************************************************
+//    map::insert
+//    pair<iterator,bool> insert (const value_type& val);
+//    iterator insert (iterator position, const value_type& val);
+//    template <class InputIterator>
+//        void insert (InputIterator first, InputIterator last);
+    map<char,int> mymap;
+    pair<map<char,int>::iterator,bool> ret;
+    //第一种插入
+    ret=mymap.insert(pair<char,int>('a',100));//插入成功，返回类型为pair，pair中的iterator为插入后键值'a'所在的iterator，bool值为true;插入失败bool为false,iterator指向容器中原有的键值iterator位置。
+    ret=mymap.insert(pair<char,int>('b',200));
+    //容器中现在是a->100,b->200;
+
+    map<char,int>::iterator it = mymap.begin();//it->first=a;
+    //第二种插入：
+    it=mymap.insert(it,pair<char,int>('a',20));//插入成功返回插入的iterator，插入失败返回已存在键值的iterator
+    cout<<it->second;//输出100（表示插入失败）
+
+    map<char,int> anothermap;
+    anothermap.insert(mymap.begin(),mymap.find('c'));//插入的是一段。
+******************************************************************************/
+
+/************************************************
+//    map::key_comp
+//    key_compare key_comp() const;
+    map<char,int> mymap;
+    map<char,int>::key_compare mycomp = mymap.key_comp();
+    mymap['a']=100;
+    mymap['b']=200;
+    mymap['c']=300;
+    map<char,int>::iterator it = mymap.begin(),it1;
+    it1=it;
+    it++;
+    cout<<mycomp(it1->first,it->first);//比较容器中两个键值的大小，第一个小于第二个返回1，否则返回0.
+********************************************************/
+
+/****************************************************
+//    map::lower_bound/upper_bound
+//    iterator lower_bound (const key_type& k);
+//    const_iterator lower_bound (const key_type& k) const;
+//    iterator upper_bound (const key_type& k);
+//    const_iterator upper_bound (const key_type& k) const;
+
+    map<char,int> mymap;
+    map<char,int>::iterator itlow,itup;
+    mymap['a']=20;
+    mymap['b']=40;
+    mymap['c']=60;
+    mymap['d']=80;
+    mymap['e']=100;
+    itlow=mymap.lower_bound ('b');//找到容器中第一个等于或大于键值为b的元素，返回他的iterator.
+    cout<<itlow->first;//输出b
+    itup=mymap.upper_bound('b');//找到容器中第一个大于键值为b的元素，返回他的iterator.
+    cout<<itup->first;//输出c
+*******************************************************/
+
+/************************************
+//    map::max_size,siz
+//    size_type max_size() const;
+    map<int,int> mymap;
+    mymap['a']=101;
+    mymap['b']=202;
+    mymap['c']=302;
+    cout<<mymap.max_size();//输出：178956970(codeblocks下)
+    cout<<mymap.size();//输出：3
+****************************************/
+
+/*********************************
+//    operator[],operator=
+    map<char,int> first;
+    map<char,int> second;
+    first['x']=8;//重载的[]
+    first['y']=16;
+    first['z']=32;
+    second=first;//重载的等号
+    first=map<char,int>();
+    cout<<first.size()<<endl;//输出0
+    cout<< second.size();//输出3
+****************************************/
+
+//    void swap (map& x);
+    map<char,int> foo,bar;
+    foo['x']=100;
+    foo['y']=200;
+
+    bar['a']=11;
+    bar['b']=22;
+    bar['c']=33;
+
+    foo.swap(bar);
+    cout<<bar.size()<<endl;//输出：2
+    return 0;
+}
+#endif 
