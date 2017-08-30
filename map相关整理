@@ -1,0 +1,126 @@
+#include <iostream>
+
+using namespace std;
+#include<map>
+#include<string>
+#if 0
+bool fncomp (char lhs, char rhs)
+{
+    return lhs<rhs;
+}
+struct classcomp
+{
+    bool operator() (const char& lhs, const char& rhs) const
+    {
+        return lhs<rhs;
+    }
+};
+int main()
+{
+    //在map容器中也不会出现重复的键值
+    // 默认构造函数
+    map<char,int> first;//char表示key值，不可以重复，int表示value,这个不做限制。
+    first['a']=10;
+    first['b']=30;
+    first['c']=50;
+    first['d']=50;
+    map<char,int>::iterator it;
+    for(it=first.begin();it!=first.end();it++)
+        cout<<it->first<<"==>"<<it->second<<endl;
+//    输出结果：
+//    a==>10
+//    b==>30
+//    c==>50
+//    d==>50
+
+    //区间构造函数
+    map<char,int> second (first.begin(),first.end());
+
+    // 拷贝构造函数
+    map<char,int> third (second);
+
+     //带比较谓词的构造函数
+    map<char,int,classcomp> fourth;//第三个参数表示排序方式
+    bool(*fn_pt)(char,char) = fncomp;
+    map<char,int,bool(*)(char,char)> fifth (fn_pt);
+
+    return 0;
+}
+#endif
+
+#if 0
+int main()
+{
+    /********************************************
+    //    map的at()函数：
+    //    mapped_type& at (const key_type& k);
+    //    const mapped_type& at (const key_type& k) const;
+
+        map<string,int>mymap;
+        mymap["alpha"]=0;
+        mymap["beta"]=0;
+        mymap["gamma"]=0;
+        mymap.at("alpha") = 10;
+        mymap.at("beta") = 20;
+        mymap.at("gamma") = 30;
+        map<string,int>::iterator it=mymap.begin();
+        for (; it!=mymap.end(); it++)
+        {
+            cout << it->first << ": " << it->second << '\n';
+        }
+    //    输出结果：
+    //    alpha: 10
+    //    beta: 20
+    //    gamma: 30
+    **************************************************/
+/***********************************************************
+
+//    map的clear()函数
+//    void clear();
+
+    map<char,int> mymap;
+    mymap['x']=100;
+    mymap['y']=200;
+    mymap['z']=300;
+    map<char,int>::iterator it=mymap.begin();
+    for (; it!=mymap.end(); it++)
+    {
+        cout << it->first << ": " << it->second << '\n';
+    }
+//    输出结果：
+//    x: 100
+//    y: 200
+//    z: 300
+
+    mymap.clear();//清空mymap中的所有元素。
+
+    mymap['a']=1101;
+    mymap['b']=2202;
+    for (it=mymap.begin(); it!=mymap.end(); it++)
+    {
+        cout << it->first << ": " << it->second << '\n';
+    }
+//    输出结果：
+//    a: 1101
+//    b: 2202
+******************************************************/
+
+/*********************************************************************
+//    map的count()函数:
+//    size_type count (const key_type& k) const;
+    map<char,int> mymap;
+    mymap ['a']=101;
+    mymap ['c']=202;
+    mymap ['f']=303;
+    mymap.count('f');//这个函数的作用就是看容器中存不存在键值为f的键值。存在返回1，不存在返回0
+    cout<<mymap.count('c')<<endl;
+    cout<<mymap.count('a')<<endl;
+    cout<<mymap.count('d')<<endl;
+//    输出结果：
+//    1
+//    1
+//    0
+****************************************************************/
+    return 0;
+}
+#endif
