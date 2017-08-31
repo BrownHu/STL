@@ -1,0 +1,51 @@
+#include <iostream>
+#include<deque>
+using namespace std;
+
+#if 0
+int main()
+{
+/************************************************************************
+    //deque构造函数
+//    default (1) explicit deque (const allocator_type& alloc = allocator_type());
+//    fill    (2) explicit deque (size_type n, const value_type& val = value_type(),
+//                const allocator_type& alloc = allocator_type());
+//    range   (3) template <class InputIterator>
+//        deque (InputIterator first, InputIterator last,
+//                const allocator_type& alloc = allocator_type());
+//    copy    (4) deque (const deque& x);
+
+
+    deque<int> first;//构造空的双端队列的int类型
+    deque<int> second (4,100);  //构造int类型的4个100
+    deque<int> third (second.begin(),second.end()-1);//用一个对象的一段去构造
+    deque<int> fourth (third);///用一个对象去构造
+
+    int myints[] = {16,2,77,29};
+    deque<int> fifth (myints, myints + sizeof(myints) / sizeof(int) );//用一个数组去构造
+****************************************************************/
+/***********************************************************
+//    deque::assign()函数
+//    range (1)   template <class InputIterator>
+//                    void assign (InputIterator first, InputIterator last);
+//
+//    fill  (2)   void assign (size_type n, const value_type& val);
+    //assign()函数就是从新初始化容器中的元素。
+    deque<int> first;
+    deque<int> second;
+    deque<int> third;
+    first.assign (7,100);//first中有7个100
+    deque<int>::iterator it;
+    it=first.begin()+1;
+    second.assign (it,first.end()-1);//second中有5个100
+
+    int myints[] = {1776,7,4};
+    third.assign (myints,myints+3);//把数组mymints放到third容器中。
+    it=third.begin();
+    while(it!=third.end())
+        cout<<*it++<<" ";
+    //输出结果：1776 7 4
+*************************************************/
+    return 0;
+}
+#endif
