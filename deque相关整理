@@ -49,3 +49,54 @@ int main()
     return 0;
 }
 #endif
+
+#if 0
+int main()
+{
+/*********************************************
+//    deque::at()函数：
+//    reference at (size_type n);
+//    const_reference at (size_type n) const;
+    deque<unsigned> mydeque (10);//初始化为10个0
+    for (unsigned i=0; i<mydeque.size(); i++)
+        mydeque.at(i)=i;
+    for (unsigned i=0; i<mydeque.size(); i++)
+        cout << ' ' << mydeque.at(i);
+//    输出结果： 0 1 2 3 4 5 6 7 8 9
+***********************************************/
+/**********************************************
+//    deque::back()函数：
+//    reference back();
+//    const_reference back() const;
+    deque<int> mydeque;
+    mydeque.push_back(10);//末尾加入一个元素
+    while (mydeque.back() != 0) //返回末尾这个元素
+        mydeque.push_back ( mydeque.back() -1 );
+    for (deque<int>::iterator it = mydeque.begin(); it!=mydeque.end(); ++it)//通过迭代器访问容器中的元素
+        cout << ' ' << *it;
+//    输出结果： 10 9 8 7 6 5 4 3 2 1 0
+*************************************************/
+/******************************************
+//    deque::clear()函数：
+//    void clear();
+    deque<int> mydeque;
+    mydeque.push_back (100);
+    mydeque.push_back (200);
+    mydeque.push_back (300);
+    for (deque<int>::iterator it = mydeque.begin(); it!=mydeque.end(); ++it)
+        cout << ' ' << *it;
+    cout << '\n';
+//    输出结果：100 200 300
+    mydeque.clear();//清空容器中的元素
+    cout<<mydeque.size()<<endl;//输出0
+********************************************/
+ /*********************************   
+//    deque::empty()函数：
+//    bool empty() const;
+    
+    deque<int> mydeque;
+    mydeque.empty();//判断容器是否为空，为空返回true,不空返回false
+***********************************/
+    return 0;
+}
+#endif
