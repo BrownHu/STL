@@ -1,5 +1,6 @@
 #include <iostream>
 #include<deque>
+#include<vector>
 using namespace std;
 
 #if 0
@@ -100,3 +101,50 @@ int main()
     return 0;
 }
 #endif
+#if 0
+int main()
+{
+/*********************************************************************
+//    deque的erase()函数：
+//    iterator erase (iterator position);
+//    iterator erase (iterator first, iterator last);
+    deque<int> mydeque;
+    for (int i=1; i<=10; i++)
+        mydeque.push_back(i);//尾部插入元素
+    mydeque.erase (mydeque.begin()+5);//删除指定ierator的元素
+    mydeque.erase (mydeque.begin(),mydeque.begin()+3);//删除一段数据
+***********************************************************************/
+/***************************************
+//    deque::front()：
+//    reference front();
+//    const_reference front() const;
+
+    deque<int> mydeque;
+    mydeque.push_front(2);//头部插入元素
+    mydeque.push_front(10);
+    cout<<mydeque.front();//输出10
+**************************************/
+
+//    deque::insert()函数：
+//    (1)iterator insert (iterator position, const value_type& val);
+//    (2)void insert (iterator position, size_type n, const value_type& val);
+//    (3)template <class InputIterator>
+//        void insert (iterator position, InputIterator first, InputIterator last);
+    deque<int> mydeque;
+    for (int i=1; i<6; i++) // 1 2 3 4 5
+        mydeque.push_back(i);
+    deque<int>::iterator it = mydeque.begin();
+    ++it;
+    it = mydeque.insert (it,10);//在it位置插入10.现在容器中元素是 1 10 2 3 4 5
+
+    mydeque.insert (it,2,20);//在it位置插入2个20，现在容器中元素是1 20 20 10 2 3 4 5
+
+    it = mydeque.begin()+2;
+    vector<int> myvector (2,30);
+    mydeque.insert (it,myvector.begin(),myvector.end());//现在容器中元素是 1 20 30 30 20 10 2 3 4 5
+
+    for (deque<int>::iterator it = mydeque.begin(); it!=mydeque.end(); ++it)
+        cout << ' ' << *it;
+    return 0;
+}
+#endif // 1
