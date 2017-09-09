@@ -48,3 +48,55 @@ int main()
     return 0;
 }
 #endif
+#if 0
+int main()
+{
+/***********************************************************
+//    list的insert()函数：
+//     (1)iterator insert (iterator position, const value_type& val);
+//     (2)void insert (iterator position, size_type n, const value_type& val);
+//     (3))template <class InputIterator>
+//            void insert (iterator position, InputIterator first, InputIterator last);
+    list<int> mylist;
+    list<int>::iterator it;
+    for (int i=1; i<=5; ++i)
+        mylist.push_back(i);//mylist中现在有1 2 3 4 5
+    it = mylist.begin();
+    ++it;//it的位置会指向2所在的位置
+
+    mylist.insert (it,10);//mylist中现在是1 10 2 3 4 5,但是it的位置会指向2所在的位置
+
+    mylist.insert (it,2,20);//mylist中现在是1 10 20 20 2 3 4 5，但是it的位置会指向第二个20所在的位置
+    --it;//it的位置会指向第一个20所在的位置
+
+    vector<int> myvector (2,30);
+    mylist.insert (it,myvector.begin(),myvector.end());//mylist中现在是1 10 20 30 30 20 2 3 4 5，it的位置会指向第二个20所在的位置
+**********************************************************************/
+
+/*******************************************************
+//    list的remove()函数：
+//    void remove (const value_type& val);
+
+    int myints[]= {17,89,7,14};
+    list<int> mylist(myints,myints+4);
+
+    mylist.remove(89);//移除容器中为89的元素，若没有，则不做任何操作。
+    list<int>::iterator it=mylist.begin();
+    while(it!=mylist.end())
+    {
+        cout<<*it<<" ";
+        it++;
+    }
+//    输出：17 7 14
+*******************************************************/
+
+    double mydoubles[]={ 12.15,  2.72, 73.0,  12.77,  3.14,
+                       12.77, 73.35, 72.25, 15.3,  72.25 };
+    list<double> mylist (mydoubles,mydoubles+10);
+    
+    mylist.sort();//元素从小到大排序
+    mylist.unique(); //去掉重复元素
+    
+    return 0;
+}
+#endif // 1
